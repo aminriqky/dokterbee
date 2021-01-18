@@ -3,12 +3,12 @@ import { StatusBar} from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import Ionicons from '@expo/vector-icons/Ionicons'
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 import HomeScreen from './src/Home/HomeScreen'
 import QueueScreen from './src/QueueScreen'
 import SettingsScreen from './src/SettingsScreen'
-import DokterScreen from './src/Home/Pesan/Dokter'
+import SpesialisScreen from './src/Home/Pesan/Spesialis'
 
 const Tab = createBottomTabNavigator();
 
@@ -75,7 +75,7 @@ export default function App() {
           headerTitleStyle: {
             fontWeight: '100',
           },
-        }} name="Dokter" component={DokterScreen} />
+        }} name="Spesialis" component={SpesialisScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )

@@ -20,10 +20,10 @@ const Covid19 = () => {
       axios.get(`https://covid-api.mmediagroup.fr/v1/cases?country=Indonesia`)
       .then(res => {
         let cov = res.data.All;
-        setData({confirmed: cov.confirmed, recovered: cov.recovered, deaths: cov.deaths, country: cov.country, updated: cov.updated})
-        setDaftarCovid(res.data.data)
-        setisLoading(true)
-        setisAnimating(false)
+        setData({confirmed: cov.confirmed, recovered: cov.recovered, deaths: cov.deaths, country: cov.country, updated: cov.updated});
+        setDaftarCovid(res.data.data);
+        setisLoading(true);
+        setisAnimating(false);
       })
     }
   }, [daftarCovid])
@@ -32,7 +32,7 @@ const Covid19 = () => {
 
   return (
     <>
-    <ActivityIndicator size="large" animating={isAnimating} color="skyblue"/>
+    <ActivityIndicator style={{position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, alignItems: 'center', justifyContent: 'center'}} pointerEvents="none" size="large" animating={isAnimating} color="skyblue"/>
     {
       isLoading &&
       <Pressable android_ripple={{ color: 'lightgrey', borderless: false, }} style={styles.anotherCard}>
@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     marginBottom: 10,
+    marginTop: 25,
     width: Dimensions.get('screen').width - 20,
     backgroundColor: 'white',
     borderRadius: 5,

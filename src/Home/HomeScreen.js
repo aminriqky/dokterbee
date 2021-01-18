@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, ImageBackground, StyleSheet, View, Dimensions, ScrollView, SafeAreaView, TouchableOpacity, Pressable, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import Covid19 from './Covid19';
 import Berita from './Berita';
 
@@ -12,64 +11,54 @@ import paru from '../../assets/paru.png';
 import saraf from '../../assets/saraf.png';
 import tht from '../../assets/tht.png';
 import gigi from '../../assets/gigi.png';
-
-const storeData = async (value) => {
-  try {
-    await AsyncStorage.setItem('@storage_Key', value)
-  } catch (e) {
-    // saving error
-  }
-}
   
 const HomeScreen = ({ navigation }) => {
 
   const [visible, setVisible] = useState(false);
-
-  const dokterUmum = JSON.stringify(14)
 
   return (
       <>
       <SafeAreaView>
           <ScrollView>
               <View style={styles.container}>
-                <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} onPress={() => navigation.push('Dokter') && storeData(amin)} style={styles.card}>
+                <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} onPress={() => navigation.push('Spesialis', { itemId: 14, otherParam: 'Dokter Umum' })} style={styles.card}>
                   <View style={styles.cardView}>
                     <ImageBackground style={styles.img} source={umum}/>
                     <Text style={styles.textMenu}>Dokter Umum</Text>
                   </View>
                 </Pressable>
-                <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} onPress={() => navigation.push('Dokter')} style={styles.card}>
+                <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} onPress={() => navigation.push('Spesialis', { itemId: 1, otherParam: 'Spesialis Mata' })} style={styles.card}>
                   <View style={styles.cardView}>
                     <ImageBackground style={styles.img} source={mata}/>
                     <Text style={styles.textMenu}>Spesialis Mata</Text>
                   </View>
                 </Pressable>
-                <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} onPress={() => navigation.push('Dokter')} style={styles.card}>
+                <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} onPress={() => navigation.push('Spesialis', { itemId: 11, otherParam: 'Spesialis Kulit & Kelamin' })} style={styles.card}>
                 <View style={styles.cardView}>
                   <ImageBackground style={styles.img} source={kulit}/>
-                  <Text style={styles.textMenu}>Spesialis Kulit</Text>
+                  <Text style={styles.textMenu}>Kulit & Kelamin</Text>
                 </View>
                 </Pressable>
-                <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} onPress={() => navigation.push('Dokter')} style={styles.card}>
+                <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} onPress={() => navigation.push('Spesialis', { itemId: 8, otherParam: 'Spesialis Saraf' })} style={styles.card}>
                 <View style={styles.cardView}>
                   <ImageBackground style={styles.img} source={saraf}/>
                   <Text style={styles.textMenu}>Spesialis Saraf</Text>
                 </View>
                 </Pressable>
-                <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} onPress={() => navigation.push('Dokter')} style={styles.card}>
+                <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} onPress={() => navigation.push('Spesialis', { itemId: 13, otherParam: 'Dokter Gigi' })} style={styles.card}>
                 <View style={styles.cardView}>
                   <ImageBackground style={styles.img} source={gigi}/>
                   <Text style={styles.textMenu}>Dokter Gigi</Text>
                 </View>
                 </Pressable>
-                <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} onPress={() => navigation.push('Dokter')} style={styles.card}>
+                <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} onPress={() => navigation.push('Spesialis', { itemId: 12, otherParam: 'Spesialis THT' })} style={styles.card}>
                 <View style={styles.cardView}>
                   <ImageBackground style={styles.img} source={tht}/>
                   <Text style={styles.textMenu}>Spesialis THT</Text>
                 </View>
                 </Pressable>
-                <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} onPress={() => navigation.push('Dokter')} style={styles.card}>
-                <View style={styles.cardView} onPress={() => navigation.navigate('Dokter')}>
+                <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} onPress={() => navigation.push('Spesialis', { itemId: 2, otherParam: 'Paru-Paru' })} style={styles.card}>
+                <View style={styles.cardView}>
                   <ImageBackground style={styles.img} source={paru}/>
                   <Text style={styles.textMenu}>Spesialis Paru</Text>
                 </View>
