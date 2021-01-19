@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, View, Dimensions, ActivityIndicator, Pressable, Text } from 'react-native';
+import { StyleSheet, View, Dimensions, ActivityIndicator, Pressable, Text, Modal } from 'react-native';
 import axios from "axios";
   
 const Covid19 = () => {
@@ -32,7 +32,9 @@ const Covid19 = () => {
 
   return (
     <>
-    <ActivityIndicator style={{position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, alignItems: 'center', justifyContent: 'center'}} pointerEvents="none" size="large" animating={isAnimating} color="skyblue"/>
+    <Modal hardwareAccelerated transparent={true} visible={isAnimating}>
+      <ActivityIndicator style={{flex: 1, marginTop: Dimensions.get('screen').width / 4, alignSelf: 'center'}} size="large" animating={isAnimating} color="skyblue"/>
+    </Modal>
     {
       isLoading &&
       <Pressable android_ripple={{ color: 'lightgrey', borderless: false, }} style={styles.anotherCard}>
