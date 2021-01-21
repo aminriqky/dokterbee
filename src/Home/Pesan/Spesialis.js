@@ -33,11 +33,11 @@ const Spesialis = ({ route }) => {
             <>
             <View key={index} style={styles.tipsContainer}>
               <Pressable android_ripple={{ color: 'lightgrey', borderless: false }} style={styles.anotherCard}>
-                <Image key={index} source={image} style={{borderRadius: 40, width: 70, height: 70, marginTop: 15, marginLeft: 20, marginRight: 20, backgroundColor: 'lightgrey'}}/>
+                <Image source={image} style={{borderRadius: 40, width: 70, height: 70, marginTop: 15, marginLeft: 20, marginRight: 20, backgroundColor: 'lightgrey'}}/>
                 <View>
-                  <Text key={index} style={{marginTop: 15, marginLeft: 10, fontWeight: 'bold'}}>{item.nama}</Text>
-                  <Text key={index} style={{marginTop: 5, marginLeft: 10}}>{otherParam}</Text>
-                  <Text key={index} style={{marginLeft: 10, marginBottom: 20}}>{item.pengalaman}</Text>
+                  <Text style={{marginTop: 15, marginLeft: 10, fontWeight: 'bold'}}>{item.nama}</Text>
+                  <Text style={{marginTop: 5, marginLeft: 10}}>{otherParam}</Text>
+                  <Text style={{marginLeft: 10, marginBottom: 20}}>{item.pengalaman}</Text>
                 </View>
               </Pressable>
             </View>

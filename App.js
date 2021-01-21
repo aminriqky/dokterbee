@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StatusBar} from "react-native";
+import { StatusBar, Image } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -9,6 +9,8 @@ import HomeScreen from './src/Home/HomeScreen'
 import QueueScreen from './src/QueueScreen'
 import SettingsScreen from './src/SettingsScreen'
 import SpesialisScreen from './src/Home/Pesan/Spesialis'
+import WebScreen from './src/Home/WebScreen'
+import BeritaScreen from './src/Home/BeritaScreen'
 
 const Tab = createBottomTabNavigator();
 
@@ -55,7 +57,13 @@ export default function App() {
       <StatusBar barStyle="light-content" backgroundColor="skyblue"/>
       <Stack.Navigator>
         <Stack.Screen options={{
-          title: 'DokterBee',
+          headerTitle: () => (
+            <Image
+              style={{ width: 150, marginBottom: 5 }}
+              source={require('./assets/logo-white.png')}
+              resizeMode='contain'
+            />
+          ),
           headerTitleAlign: 'center',
           headerStyle: {
             backgroundColor: 'skyblue',
@@ -76,6 +84,28 @@ export default function App() {
             fontWeight: '100',
           },
         }} name="Spesialis" component={SpesialisScreen} />
+        <Stack.Screen options={{
+          title: 'Web Covid-19 Indonesia',
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: 'skyblue',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: '100',
+          },
+        }} name="WebScreen" component={WebScreen} />
+        <Stack.Screen options={{
+          title: 'Info Kesehatan',
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: 'skyblue',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: '100',
+          },
+        }} name="BeritaScreen" component={BeritaScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )
