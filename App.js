@@ -5,12 +5,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-import HomeScreen from './src/Home/HomeScreen'
-import QueueScreen from './src/QueueScreen'
-import SettingsScreen from './src/SettingsScreen'
-import SpesialisScreen from './src/Home/Pesan/Spesialis'
-import WebScreen from './src/Home/WebScreen'
-import BeritaScreen from './src/Home/BeritaScreen'
+import HomeScreen from './src/Home/HomeScreen';
+import NewsScreen from './src/NewsScreen';
+import SettingsScreen from './src/SettingsScreen';
+import SpesialisScreen from './src/Home/Pesan/Spesialis';
+import WebScreen from './src/Home/WebScreen';
+import BeritaScreen from './src/Home/BeritaScreen';
+import DetailScreen from './src/Home/Pesan/DetailScreen';
+import SearchScreen from './src/Home/SearchScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -25,12 +27,12 @@ function Home() {
             if (route.name === 'Home') {
               iconName = focused
                 ? 'home' : 'home-outline';
-            } else if (route.name === 'Settings') {
+            } else if (route.name === 'About') {
               iconName = focused 
-              ? 'settings' : 'settings-outline';
-            } else if (route.name === 'Queue') {
+              ? 'information-circle' : 'information-circle-outline';
+            } else if (route.name === 'Info') {
               iconName = focused 
-              ? 'trail-sign' : 'trail-sign-outline';
+              ? 'newspaper' : 'newspaper-outline';
             }
 
             return <Ionicons name={iconName} size={size} color={color} />;
@@ -42,8 +44,8 @@ function Home() {
         }}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Queue" component={QueueScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+        <Tab.Screen name="Info" component={NewsScreen} />
+        <Tab.Screen name="About" component={SettingsScreen} />
       </Tab.Navigator>
     </>
   );
@@ -106,6 +108,28 @@ export default function App() {
             fontWeight: '100',
           },
         }} name="BeritaScreen" component={BeritaScreen} />
+        <Stack.Screen options={{
+          title: 'Detail Dokter',
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: 'skyblue',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: '100',
+          },
+        }} name="DetailScreen" component={DetailScreen} />
+        <Stack.Screen options={{
+          title: 'Cari Dokter',
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: 'skyblue',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: '100',
+          },
+        }} name="SearchScreen" component={SearchScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )
