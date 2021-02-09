@@ -22,30 +22,32 @@ const Spesialis = ({ route, navigation }) => {
     return (
     <ScrollView>
     <Text style={{fontWeight: 'bold',marginTop: 20, marginLeft: 20, marginBottom: 10, color: 'black'}}>{otherParam}</Text>
-    <Modal hardwareAccelerated transparent={true} visible={isAnimating}>
-      <ActivityIndicator style={{flex: 1, marginTop: Dimensions.get('screen').width / 4, alignSelf: 'center'}} size="large" animating={isAnimating} color="skyblue"/>
-    </Modal>
     {
       daftarDokter !== null && daftarDokter.map((item)=>{
       const image = { uri: `https://dokterbee.sashi.id/storage/${item.foto}` };
-      return(
-        item.spesialis_id == itemId && (
+      if (item.spesialis_id == itemId) {
+        return(
           <>
-          <View key={item.id} style={styles.tipsContainer}>
-            <Pressable android_ripple={{ color: 'lightgrey', borderless: false }} onPress={() => navigation.navigate('DetailScreen', 
-            { idParam: item.id, nameParam: item.nama, otherParam: otherParam, photoParam: image, miscParam: item.pengalaman })} style={styles.anotherCard}>
-              <Image source={image} style={{borderRadius: 40, width: 70, height: 70, marginTop: 15, marginLeft: 20, marginRight: 10, backgroundColor: 'lightgrey'}}/>
-              <View>
-                <Text style={{marginTop: 15, marginLeft: 10, fontWeight: 'bold'}}>{item.nama.substring(0, 35)}</Text>
-                <Text style={{marginTop: 5, marginLeft: 10}}>{otherParam}</Text>
-                <Text style={{marginLeft: 10, marginBottom: 20}}>{item.keterangan}</Text>
-              </View>
-            </Pressable>
-          </View>
+            <View key={item.id} style={styles.tipsContainer}>
+              <Pressable android_ripple={{ color: 'lightgrey', borderless: false }} onPress={() => navigation.navigate('DetailScreen', 
+              { idParam: item.id, nameParam: item.nama, otherParam: otherParam, photoParam: image, miscParam: item.pengalaman })} style={styles.anotherCard}>
+                <Image source={image} style={{borderRadius: 40, width: 70, height: 70, marginTop: 15, marginLeft: 20, marginRight: 10, backgroundColor: 'lightgrey'}}/>
+                <View>
+                  <Text style={{marginTop: 15, marginLeft: 10, fontWeight: 'bold'}}>{item.nama.substring(0, 35)}</Text>
+                  <Text style={{marginTop: 5, marginLeft: 10}}>{otherParam}</Text>
+                  <Text style={{marginLeft: 10, marginBottom: 20}}>{item.keterangan}</Text>
+                </View>
+              </Pressable>
+            </View>
           </>
         )
-      )
+      }
       })
+    }
+    {
+      daftarDokter == null &&
+      <ActivityIndicator size="large" animating={isAnimating} color="skyblue"
+      style={{marginTop: Dimensions.get('screen').width / 1.2, alignSelf: 'center'}} />
     }
     </ScrollView>
     );
