@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import { Text, View, FlatList, Pressable, Image, StyleSheet, Dimensions } from 'react-native';
+import { Text, View, FlatList, Pressable, Image, StyleSheet, Dimensions, ActivityIndicator } from 'react-native';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 
@@ -25,6 +25,7 @@ function Item ({ judul_berita, thumbnail, detail, created_at }) {
 function NewsScreen() {
 
   const [daftarBerita, setDaftarBerita] = useState(null);
+  const [isAnimating, setisAnimating] = useState(true);
 
   useEffect( () => {
     if (daftarBerita === null){
@@ -32,6 +33,7 @@ function NewsScreen() {
       .then(res => {
         const berita = res.data;
         setDaftarBerita(berita);
+        setisAnimating(false);
       })
     }
   }, [daftarBerita])
@@ -43,6 +45,11 @@ function NewsScreen() {
   return (
     <>
     <Text style={{fontWeight: 'bold',marginTop: 20, marginLeft: 20, marginBottom: 10, fontSize: 16}}>Info Kesehatan</Text>
+    {
+      daftarBerita == null &&
+      <ActivityIndicator size="large" animating={isAnimating} color="skyblue"
+      style={{marginTop: Dimensions.get('screen').width / 2, alignSelf: 'center'}} />
+    }
     <FlatList
       data={daftarBerita}
       renderItem={renderItem}

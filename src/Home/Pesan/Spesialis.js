@@ -23,6 +23,11 @@ const Spesialis = ({ route, navigation }) => {
     <ScrollView>
     <Text style={{fontWeight: 'bold',marginTop: 20, marginLeft: 20, marginBottom: 10, color: 'black'}}>{otherParam}</Text>
     {
+      daftarDokter == null &&
+      <ActivityIndicator size="large" animating={isAnimating} color="skyblue"
+      style={{marginTop: Dimensions.get('screen').width / 2, alignSelf: 'center'}} />
+    }
+    {
       daftarDokter !== null && daftarDokter.map((item)=>{
       const image = { uri: `https://dokterbee.sashi.id/storage/${item.foto}` };
       if (item.spesialis_id == itemId) {
@@ -43,11 +48,6 @@ const Spesialis = ({ route, navigation }) => {
         )
       }
       })
-    }
-    {
-      daftarDokter == null &&
-      <ActivityIndicator size="large" animating={isAnimating} color="skyblue"
-      style={{marginTop: Dimensions.get('screen').width / 1.2, alignSelf: 'center'}} />
     }
     </ScrollView>
     );

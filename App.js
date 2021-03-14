@@ -7,12 +7,13 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 import HomeScreen from './src/Home/HomeScreen';
 import NewsScreen from './src/NewsScreen';
-import SettingsScreen from './src/SettingsScreen';
+import AboutScreen from './src/AboutScreen';
 import SpesialisScreen from './src/Home/Pesan/Spesialis';
 import WebScreen from './src/Home/WebScreen';
 import BeritaScreen from './src/Home/BeritaScreen';
 import DetailScreen from './src/Home/Pesan/DetailScreen';
 import SearchScreen from './src/Home/SearchScreen';
+import LoginScreen from './src/LoginScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -45,7 +46,7 @@ function Home() {
       >
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Info" component={NewsScreen} />
-        <Tab.Screen name="About" component={SettingsScreen} />
+        <Tab.Screen name="About" component={AboutScreen} />
       </Tab.Navigator>
     </>
   );
@@ -58,6 +59,7 @@ export default function App() {
     <NavigationContainer>
       <StatusBar barStyle="light-content" backgroundColor="skyblue"/>
       <Stack.Navigator>
+        <Stack.Screen options={{headerShown: false}} name="LoginScreen" component={LoginScreen} />
         <Stack.Screen options={{
           headerTitle: () => (
             <Image

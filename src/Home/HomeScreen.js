@@ -45,6 +45,7 @@ const HomeScreen = ({ navigation }) => {
   const [daftarCovid, setDaftarCovid] =  useState(null);
   const [isLoading, setisLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
+  const [dokterSp, setDokterSp] =  useState(null);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
@@ -63,6 +64,21 @@ const HomeScreen = ({ navigation }) => {
         setisLoading(true);
       })
     }
+    if (dokterSp === null) {
+      setDokterSp([
+        { itemId: 14, otherParam: 'Dokter Umum', img: umum, nama: 'Dokter Umum' }, 
+        { itemId: 1, otherParam: 'Spesialis Mata', img: mata, nama: 'Spesialis Mata' }, 
+        { itemId: 11, otherParam: 'Spesialis Kulit & Kelamin', img: kulit, nama: 'Kulit & Kelamin' }, 
+        { itemId: 8, otherParam: 'Spesialis Saraf', img: saraf, nama: 'Spesialis Saraf' }, 
+        { itemId: 7, otherParam: 'Spesialis Penyakit Dalam', img: dalam, nama: 'Penyakit Dalam' }, 
+        { itemId: 6, otherParam: 'Spesialis Anak', img: anak, nama: 'Spesialis Anak' }, 
+        { itemId: 10, otherParam: 'Spesialis Bedah', img: bedah, nama: 'Spesialis Bedah' }, 
+        { itemId: 9, otherParam: 'Spesialis Kandungan', img: kandungan, nama: 'Kandungan' }, 
+        { itemId: 13, otherParam: 'Dokter Gigi', img: gigi, nama: 'Dokter Gigi' }, 
+        { itemId: 12, otherParam: 'Spesialis THT', img: tht, nama: 'Spesialis THT' }, 
+        { itemId: 2, otherParam: 'Paru-Paru', img: paru, nama: 'Spesialis Paru' }
+      ])
+    }
   }, [daftarCovid])
 
   return (
@@ -79,83 +95,21 @@ const HomeScreen = ({ navigation }) => {
         <Image style={{width: 180, height: 140, alignSelf: 'flex-end', position: 'absolute'}} source={require('../../assets/banner_doctor.png')} />
       </View>
       <View style={styles.container}>
-        <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} style={styles.card} 
-        onPress={() => navigation.navigate('Spesialis', { itemId: 14, otherParam: 'Dokter Umum' })}>
-          <View style={styles.cardView}>
-            <ImageBackground style={styles.img} source={umum}/>
-            <Text style={styles.textMenu}>Dokter Umum</Text>
-          </View>
-        </Pressable>
-        <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} style={styles.card} 
-        onPress={() => navigation.navigate('Spesialis', { itemId: 1, otherParam: 'Spesialis Mata' })}>
-          <View style={styles.cardView}>
-            <ImageBackground style={styles.img} source={mata}/>
-            <Text style={styles.textMenu}>Spesialis Mata</Text>
-          </View>
-        </Pressable>
-        <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} style={styles.card} 
-        onPress={() => navigation.navigate('Spesialis', { itemId: 11, otherParam: 'Spesialis Kulit & Kelamin' })}>
-        <View style={styles.cardView}>
-          <ImageBackground style={styles.img} source={kulit}/>
-          <Text style={styles.textMenu}>Kulit & Kelamin</Text>
-        </View>
-        </Pressable>
-        <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} style={styles.card} 
-        onPress={() => navigation.navigate('Spesialis', { itemId: 8, otherParam: 'Spesialis Saraf' })}>
-        <View style={styles.cardView}>
-          <ImageBackground style={styles.img} source={saraf}/>
-          <Text style={styles.textMenu}>Spesialis Saraf</Text>
-        </View>
-        </Pressable>
-        <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} style={styles.card} 
-        onPress={() => navigation.navigate('Spesialis', { itemId: 7, otherParam: 'Spesialis Penyakit Dalam' })}>
-          <View style={styles.cardView}>
-            <ImageBackground style={styles.img} source={dalam}/>
-            <Text style={styles.textMenu}>Penyakit Dalam</Text>
-          </View>
-        </Pressable>
-        <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} style={styles.card} 
-        onPress={() => navigation.navigate('Spesialis', { itemId: 6, otherParam: 'Spesialis Anak' })}>
-          <View style={styles.cardView}>
-            <ImageBackground style={styles.img} source={anak}/>
-            <Text style={styles.textMenu}>Spesialis Anak</Text>
-          </View>
-        </Pressable>
-        <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} style={styles.card} 
-        onPress={() => navigation.navigate('Spesialis', { itemId: 10, otherParam: 'Spesialis Bedah' })}>
-        <View style={styles.cardView}>
-          <ImageBackground style={styles.img} source={bedah}/>
-          <Text style={styles.textMenu}>Spesialis Bedah</Text>
-        </View>
-        </Pressable>
-        <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} style={styles.card} 
-        onPress={() => navigation.navigate('Spesialis', { itemId: 9, otherParam: 'Spesialis Kandungan' })}>
-        <View style={styles.cardView}>
-          <ImageBackground style={styles.img} source={kandungan}/>
-          <Text style={styles.textMenu}>Kandungan</Text>
-        </View>
-        </Pressable>
-        <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} style={styles.card} 
-        onPress={() => navigation.navigate('Spesialis', { itemId: 13, otherParam: 'Dokter Gigi' })}>
-        <View style={styles.cardView}>
-          <ImageBackground style={styles.img} source={gigi}/>
-          <Text style={styles.textMenu}>Dokter Gigi</Text>
-        </View>
-        </Pressable>
-        <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} style={styles.card} 
-        onPress={() => navigation.navigate('Spesialis', { itemId: 12, otherParam: 'Spesialis THT' })}>
-        <View style={styles.cardView}>
-          <ImageBackground style={styles.img} source={tht}/>
-          <Text style={styles.textMenu}>Spesialis THT</Text>
-        </View>
-        </Pressable>
-        <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} style={styles.card} 
-        onPress={() => navigation.navigate('Spesialis', { itemId: 2, otherParam: 'Paru-Paru' })}>
-        <View style={styles.cardView}>
-          <ImageBackground style={styles.img} source={paru}/>
-          <Text style={styles.textMenu}>Spesialis Paru</Text>
-        </View>
-        </Pressable>
+      {
+        dokterSp !== null && dokterSp.map((item, index)=>{
+        return(
+        <>
+          <Pressable key={index} android_ripple={{ color: 'lightgrey', borderless: true, }} style={styles.card} 
+          onPress={() => navigation.navigate('Spesialis', { itemId: item.itemId, otherParam: item.otherParam })}>
+            <View style={styles.cardView}>
+              <ImageBackground style={styles.img} source={item.img}/>
+              <Text style={styles.textMenu}>{item.nama}</Text>
+            </View>
+          </Pressable>
+        </>
+        )
+        })
+      }
         <Pressable android_ripple={{ color: 'lightgrey', borderless: true, }} style={styles.card} onPress={() => setVisible(true)}>
           <View style={styles.cardView}>
             <Ionicons style={styles.lainnya} name="grid" size={36} color="lightgrey" />
